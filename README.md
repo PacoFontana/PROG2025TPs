@@ -1,5 +1,1 @@
-Paco Fontana
-Ivo Ansorena
-Andres Garcia
-Lautaro Acosta
-Juan 
+Paco Fontana, Ivo Ansorena, Andres Garcia, Lautaro Acosta, Juan 
