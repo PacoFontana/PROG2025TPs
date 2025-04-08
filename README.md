@@ -28,7 +28,7 @@ pagina-hardware/
 Cada integrante trabaja en su propia rama. Ejemplos:
 - `home-juan`
 - `cards-ivo`
-- `contacto-andres`
+- `contacto-andy`
 - `galeria-paco`
 - `navbar/footer-lautaro`
 
