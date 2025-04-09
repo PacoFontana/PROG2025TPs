@@ -1,4 +1,5 @@
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap'); 
+:root {
     --negro: #000;
     --verde-chillon: #00ff00;
     --verde-secundario: #187710;
@@ -6,22 +7,82 @@
     --blanco-letras: #ffffff;
     --gris: #868686;
 }
-header{
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.intro{
-    
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--negro);
 }
 
-.cards{
-
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 20px;
+    width: 1000px;
+    padding: 10px;
+    background-color: var(--negro);
+    box-sizing: border-box;
 }
 
-.galeria{
-
+.card {
+    position: relative;
+    width: 230px;
+    height: 380px;
+    border: 2px solid var(--verde-chillon);
+    border-radius: 13px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--blanco-letras);
+    background-color: #187710;
+    display: flex;
+    flex-direction: column;
 }
 
-footer{
+.card h2 {
+    font-size: 18px;
+    margin: 0 0 0 5px;
+}
 
+.card p {
+    margin: 5px 5px 0;
+}
+
+
+.card img {
+    width: 226px;
+    height: 220px;
+    border-bottom: 2px solid var(--verde-chillon);
+    border-radius: 10px 10px 0 0;
+    margin: 0;
+}
+
+.card button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--verde-chillon);
+    border: 2px solid var(--blanco-letras);
+    width: 80px;
+    border-radius: 8px;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.card button:hover {
+    background-color: white;
+    border: 2px solid var(--verde-chillon);
+    transition: all 0.3s ease;
 }
