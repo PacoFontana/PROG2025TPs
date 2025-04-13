@@ -1,22 +1,26 @@
 body {
+    background-color: #000000;
+}
+
+.div-form {
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-form {
+.form-tech {
     background: rgb(12, 49, 7);
-    padding: 30px;
+    padding: 20px;
+    margin: 50px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(48, 109, 8, 0.1);
     width: 300px;
     text-align: center;
 }
 
-label {
+.label-form {
     color: #187710;
     display: block;
     font-weight: bold;
@@ -24,11 +28,7 @@ label {
     text-align: left; 
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-input[type="textarea"]{
+.input-form{
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -38,7 +38,18 @@ input[type="textarea"]{
     text-align: center; 
 }
 
-select{
+#radio-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 10px;
+}
+
+.terminos-radio {
+    margin-top: 10px;
+}
+
+select {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -46,12 +57,18 @@ select{
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center; 
+    font-weight: bold;  
+    transition: background-color 0.3s;
 }
 
-button {
+select:hover {
+    background-color: #00ff00;
+}
+
+.button-form {
     margin-top: 15px;
     background-color: #00ff00;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px;
     width: 100%;
@@ -59,6 +76,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button-form:hover {
     background-color: #187710;
 }
