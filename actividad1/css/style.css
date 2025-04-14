@@ -6,9 +6,56 @@
     --blanco-letras: #ffffff;
     --gris: #868686;
 }
-header{
+
+* {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+
+header{ 
 
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--negro);
+    color: var(--blanco-letras);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--rojo-hover);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2.5rem;
+    color: var(--blanco-letras);
+  }
+  
+  .logo-imagen {
+    height: 60px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: var(--blanco-letras);
+    font-weight: bold;
+    transition: color 0.3s, transform 0.2s;
+  }
+  
+  .nav-links a:hover {
+    color: var(--rojo-hover);
+    transform: scale(1.05);
+  }
+  
 
 .intro{
     
@@ -22,6 +69,37 @@ header{
 
 }
 
-footer{
+footer {
+    background-color: var(--negro);
+    color: var(--blanco-letras);
+    text-align: center;
+    padding: 20px 0;
+}
 
+.footer-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-contenido p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.iconos-redes-sociales {
+    display: flex;
+    gap: 20px;
+}
+
+.iconos-redes-sociales img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.iconos-redes-sociales img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
 }

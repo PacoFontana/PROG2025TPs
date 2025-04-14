@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practico 1 - Prgramacion III</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -14,6 +16,18 @@
     Para el css lo mismo cada uno sube su propio css a su rama, y luego se hace un merge. -->
 
     <header>
+        <nav class = "navbar"> <!-- barra de navegacion-->
+            <h1 class = "logo"> <!-- logo experimental por ahora-->
+                <img src = "img/gaming-pc.png" class = "logo-imagen">
+                HardwareZone
+            </h1>
+            <ul class = "nav-links"> <!-- lista desordenada, abajo cada item arrojaria a cada seccion de la pagina-->
+                <li><a href = "#home" >Inicio</a></li>
+                <li><a href = "#servicios">Servicios</a></li>
+                <li><a href = "#galeria">Galeria</a></li>
+                <li><a href = "#contacto">Contacto</a></li>
+            </ul>
+        </nav>
 
     </header>
     <section class="intro">
@@ -25,7 +39,23 @@
     <section class="galeria">
 
     </section>
-    <footer>
+    <footer class = "footer"> <!-- definicion footer-->
+        <div class = "footer-contenido"> <!-- para agrupar todo el contenido, para aplicar estilo a esa parte especifica -->
+            <p>&copy; 2025 HardwareZone. Todos los derechos reservados</p> <!--agrega el simbolito de copyright © -->
+            <div class = "iconos-redes-sociales"> 
+                <a href = "https://www.instagram.com" target = "_blank"> <!-- el link de una red, y target blank hace que se abra n una nueva pestaña--> 
+                    <img src = "img/instagram (1).png" alt = "cuenta de instagram"> <!--el alt sirve para aclarar la imagen si no llega a cargar-->
+                </a>
+                <a href = "https://x.com" target = "_blank">
+                    <img src = "img/twitter.png" alt = "cuenta de twitter(x)">
+                </a>
+                <a href = "https://www.youtube.com" target = "_blank">
+                    <img src = "img/youtube.png" alt = "canal de youtube">
+                </a>
+
+            </div>
+
+        </div>
 
     </footer>
 </body>
