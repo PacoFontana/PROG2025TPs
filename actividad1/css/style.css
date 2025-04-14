@@ -1,4 +1,4 @@
-:root{
+:root {
     --negro: #000;
     --verde-chillon: #00ff00;
     --verde-secundario: #187710;
@@ -6,22 +6,41 @@
     --blanco-letras: #ffffff;
     --gris: #868686;
 }
-header{
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--negro); 
+    color: var(--blanco-letras);
+    margin: 0;
 }
 
-.intro{
+header {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    background-color: var(--negro);
+}
+
+.intro {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.cards {
     
 }
 
-.cards{
+.galeria {
 
 }
 
-.galeria{
-
-}
-
-footer{
-
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--verde-secundario);
+    color: var(--blanco-letras);
+    margin-top: 3rem;
 }
