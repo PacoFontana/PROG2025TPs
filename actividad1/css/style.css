@@ -34,7 +34,7 @@ body {
     background-color: var(--negro);
     color: var(--blanco-letras);
     padding: 1rem 2rem;
-    border-bottom: 2px solid var(--rojo-hover);
+    border-bottom: 2px solid var(--verde-chillon);
     width: 100%;
 }
   
@@ -64,7 +64,7 @@ body {
 }
   
   .nav-links a:hover {
-    color: var(--rojo-hover);
+    color: var(--verde-chillon);
     transform: scale(1.05);
 }
 
