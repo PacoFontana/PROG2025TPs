@@ -1,0 +1,59 @@
+<!--
+4. Contacto
+● Formulario con:
+    ○ Nombre.
+    ○ Email.
+    ○ Teléfono.
+    ○ Comentarios (textarea).
+    ○ Selector desplegable.
+    ○ Checkbox o radio button.
+● Labels para cada campo.
+● Botones de enviar y reset. (no hace falta que sean funcionales)
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>Formulario | Hardware</title>
+</head>
+<body>
+    <div class="div-form">
+        <form class="form-tech">
+            <label class="label-form" for="nombre">Nombre:</label>
+            <input class="input-form" type="text" id="nombre" name="nombre" required>
+
+            <label class="label-form"  for="email">Email:</label>
+            <input class="input-form" type="email" id="email" name="email" required>
+
+            <label class="label-form"  for="telefono">Numero de telefono:</label>
+            <input class="input-form" type="tel" id="telefono" name="telefono" required>
+
+            <label class="label-form"  for="cometarios">Comentarios:</label>
+            <input class="input-form" type="textarea" id="cometarios" name="cometarios" required>
+
+            <label class="label-form"  for="sexo">Sexo:</label>
+            <select name="sexo" id="sexo" required>
+                <option disabled selected value="" class="seleccion-genero">Selecciona un genero</option>    
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="O">Otro</option>
+            </select>
+
+
+            <label class="label-form"  for="password">Contraseña:</label>
+            <input class="input-form" type="password" id="password" name="password" required>
+
+            <div id="radio-container"> 
+            <label class="label-form"  for="terminos">Aceptar terminos y condiciones</label>
+            <input type="radio" class="terminos-radio" name="radio" value="aceptado">
+            </div>
+
+            <button class="button-form"type="submit">Enviar</button>
+            <button class="button-form type="submit">Reset</button>
+        </form>
+    </div>    
+</body>
+</html>
