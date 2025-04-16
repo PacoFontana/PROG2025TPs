@@ -1,0 +1,124 @@
+/* Fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+:root{
+    --negrito: #111111;
+    --negro: #000;
+    --verde-chillon: #00ff00;
+    --verde-secundario: #187710;
+    --rojo-hover: #ff0000;
+    --blanco-letras: #ffffff;
+    --gris: #868686;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #111111;
+  color: #ffffff;
+  line-height: 1.6;
+  /* padding: 2rem; */
+}
+
+/* Galería principal */
+.galeria {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Secciones de galería */
+.gallery-section {
+  margin-bottom: 4rem;
+}
+
+/* Títulos alineados */
+.gallery-section.left h2 {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.gallery-section.right h2 {
+  text-align: right;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Contenedor de imágenes */
+.gallery-section .images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+/* Estilo individual de imagen */
+.gallery-section .images img {
+  width: calc(33.333% - 1rem);
+  border-radius: 8px;
+  border: 3px solid #000000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover */
+.gallery-section .images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px var(--verde-secundario);
+  border-color: var(--verde-chillon)
+}
+
+/* Botón de ejemplo (si lo querés usar en la galería) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--verde-secundario);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 10px #000;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var();
+  transform: translateY(-2px);
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+  .gallery-section .images img {
+    width: calc(50% - 0.75rem);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .gallery-section .images {
+    flex-direction: column;
+  }
+
+  .gallery-section .images img {
+    width: 100%;
+  }
+
+  .gallery-section.left h2,
+  .gallery-section.right h2 {
+    text-align: center;
+  }
+}

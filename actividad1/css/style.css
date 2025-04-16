@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 :root{
+    --negrito: #111111;
     --negro: #000;
     --verde-chillon: #00ff00;
     --verde-secundario: #187710;
@@ -15,23 +18,24 @@
 
 
 body {
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: column;
-     justify-content: center;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: var(--negro);
+    background-color: var(--negrito);
 }
  /* <------------HEADER-----------------> */
- header{
+header{
     width: 100%;
- }
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--negro);
+    background-color: var(--negrito);
     color: var(--blanco-letras);
     padding: 1rem 2rem;
     border-bottom: 2px solid var(--verde-chillon);
@@ -86,7 +90,7 @@ body {
     width: 100%;          
     max-width: 1000px;
     padding: 10px;
-    background-color: var(--negro);
+    background-color: var(--negrito);
     box-sizing: border-box;
 }
 
@@ -149,7 +153,7 @@ body {
 
 /* <----------FOOTER----------> */
 footer {
-    background-color: var(--negro);
+    background-color: var(--negrito);
     color: var(--blanco-letras);
     text-align: center;
     padding: 20px 0;
