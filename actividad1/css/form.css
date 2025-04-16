@@ -2,6 +2,12 @@ body {
     background-color: #000000;
 }
 
+.button-footer {
+    display: flex;
+    float: right;
+    width: 120px;
+}
+
 .div-form {
     font-family: Arial, sans-serif;
     background-color: #000000;
@@ -74,6 +80,7 @@ select:hover {
     width: 100%;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button-form:hover {
