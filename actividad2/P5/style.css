@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    font-family: Poppins, sans-serif;
+    padding: 20px;
+  }
+  
+  .grupo-formulario {
+    margin-bottom: 15px;
+  }
+  
+  .grupo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .grupo-formulario input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .mensaje-error {
+    display: block;
+    color: red;
+    font-size: 15px;
+    height: 15px;
+    margin-top: 5px;
+  }
+  

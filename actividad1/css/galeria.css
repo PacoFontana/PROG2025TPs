@@ -1,6 +1,19 @@
 /* Fuente desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
+<<<<<<< HEAD
+=======
+:root{
+    --negrito: #111111;
+    --negro: #000;
+    --verde-chillon: #00ff00;
+    --verde-secundario: #187710;
+    --rojo-hover: #ff0000;
+    --blanco-letras: #ffffff;
+    --gris: #868686;
+}
+
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
 /* Reset básico */
 * {
   margin: 0;
@@ -13,13 +26,21 @@ body {
   background-color: #111111;
   color: #ffffff;
   line-height: 1.6;
+<<<<<<< HEAD
   padding: 2rem;
+=======
+  /* padding: 2rem; */
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
 }
 
 /* Galería principal */
 .galeria {
   max-width: 1200px;
   margin: 0 auto;
+<<<<<<< HEAD
+=======
+  padding: 2rem;
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
 }
 
 /* Secciones de galería */
@@ -66,15 +87,24 @@ body {
 /* Efecto hover */
 .gallery-section .images img:hover {
   transform: scale(1.05);
+<<<<<<< HEAD
   box-shadow: 0 10px 30px rgba(139, 0, 0, 0.8);
   border-color: #8B0000;
+=======
+  box-shadow: 0 10px 30px var(--verde-secundario);
+  border-color: var(--verde-chillon)
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
 }
 
 /* Botón de ejemplo (si lo querés usar en la galería) */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
+<<<<<<< HEAD
   background-color: #8B0000;
+=======
+  background-color: var(--verde-secundario);
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -85,7 +115,11 @@ body {
 }
 
 .btn:hover {
+<<<<<<< HEAD
   background-color: #a30000;
+=======
+  background-color: var();
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a
   transform: translateY(-2px);
 }
 
@@ -110,4 +144,8 @@ body {
   .gallery-section.right h2 {
     text-align: center;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d326262ba6520c8f1b0cbfedc5d71e914b8a0e8a

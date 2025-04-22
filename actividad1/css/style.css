@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 :root{
+    --negrito: #111111;
     --negro: #000;
     --verde-chillon: #00ff00;
     --verde-secundario: #187710;
@@ -15,23 +18,24 @@
 
 
 body {
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: column;
-     justify-content: center;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: var(--negro);
+    background-color: var(--negrito);
 }
  /* <------------HEADER-----------------> */
- header{
+header{
     width: 100%;
- }
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--negro);
+    background-color: var(--negrito);
     color: var(--blanco-letras);
     padding: 1rem 2rem;
     border-bottom: 2px solid var(--verde-chillon);
@@ -77,79 +81,9 @@ body {
     color: #ffffff;
 }
 
-/* <----------CARDS----------> */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px 20px;
-    width: 100%;          
-    max-width: 1000px;
-    padding: 10px;
-    background-color: var(--negro);
-    box-sizing: border-box;
-}
-
-.card {
-    position: relative;
-    width: 230px;
-    height: 380px;
-    border: 2px solid var(--verde-chillon);
-    border-radius: 13px;
-    font-family: 'Poppins', sans-serif;
-    color: var(--blanco-letras);
-    background-color: #187710;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 40px;
-}
-
-.card h2 {
-    font-size: 18px;
-    margin: 0 0 0 5px;
-}
-
-.card p {
-    margin: 5px 5px 0;
-}
-
-
-.card img {
-    width: 226px;
-    height: 220px;
-    border-bottom: 2px solid var(--verde-chillon);
-    border-radius: 10px 10px 0 0;
-    margin: 0;
-}
-
-.card button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: var(--verde-chillon);
-    border: 2px solid var(--blanco-letras);
-    width: 80px;
-    border-radius: 8px;
-    padding: 5px;
-    color: black;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: sans-serif;
-}
-
-.card button:hover {
-    background-color: white;
-    border: 2px solid var(--verde-chillon);
-    transition: all 0.3s ease;
-}
-
-
-
-
 /* <----------FOOTER----------> */
 footer {
-    background-color: var(--negro);
+    background-color: var(--negrito);
     color: var(--blanco-letras);
     text-align: center;
     padding: 20px 0;
@@ -181,4 +115,24 @@ footer {
 .iconos-redes-sociales img:hover {
     transform: scale(1.2);
     filter: brightness(1.2);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding-top: 56.25%; /* Relación 16:9 */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }

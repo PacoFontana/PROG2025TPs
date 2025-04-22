@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>P5 - Validacion de formularios</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <form id="formulario">
+    <div class="grupo-formulario">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" />
+      <span class="mensaje-error" id="error-nombre"></span>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="correo">Correo electrónico</label>
+      <input type="text" id="correo" name="correo" />
+      <span class="mensaje-error" id="error-correo"></span>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="edad">Edad</label>
+      <input type="number" id="edad" name="edad" />
+      <span class="mensaje-error" id="error-edad"></span>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* <----------CARDS----------> */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 20px;
+    width: 100%;          
+    max-width: 1000px;
+    padding: 10px;
+    background-color: var(--negrito);
+    box-sizing: border-box;
+}
+
+.card {
+    position: relative;
+    width: 230px;
+    height: 380px;
+    border: 2px solid var(--verde-chillon);
+    border-radius: 13px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--blanco-letras);
+    background-color: #187710;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin: 0 0 0 5px;
+}
+
+.card p {
+    margin: 5px 5px 0;
+}
+
+
+.card img {
+    width: 226px;
+    height: 220px;
+    border-bottom: 2px solid var(--verde-chillon);
+    border-radius: 10px 10px 0 0;
+    margin: 0;
+}
+
+.card button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--verde-chillon);
+    border: 2px solid var(--blanco-letras);
+    width: 80px;
+    border-radius: 8px;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.card button:hover {
+    background-color: white;
+    border: 2px solid var(--verde-chillon);
+    transition: all 0.3s ease;
+}
