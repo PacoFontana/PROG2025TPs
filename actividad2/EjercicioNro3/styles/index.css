@@ -1,0 +1,38 @@
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #0026ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.parrafo {
+    font-family: Tahoma, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid #007acc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ocultar{
+    display: none;
+}
+
+.resaltar{
+    background-color: #ffa600;
+    font-weight: bold;
+}

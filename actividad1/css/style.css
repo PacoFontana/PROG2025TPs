@@ -41,33 +41,33 @@ header{
     border-bottom: 2px solid var(--verde-chillon);
     width: 100%;
 }
-  
-  .logo {
+
+.logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 2.5rem;
     color: var(--blanco-letras);
 }
-  
-  .logo-imagen {
+
+.logo-imagen {
     height: 60px;
 }
-  
-  .nav-links {
+
+.nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
 }
-  
-  .nav-links a {
+
+.nav-links a {
     text-decoration: none;
     color: var(--blanco-letras);
     font-weight: bold;
     transition: color 0.3s, transform 0.2s;
 }
-  
-  .nav-links a:hover {
+
+.nav-links a:hover {
     color: var(--verde-chillon);
     transform: scale(1.05);
 }
