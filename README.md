@@ -11,8 +11,14 @@ Sitio web estático que muestra productos de hardware. Tiene:
 ```
 pagina-hardware/
 ├── index.html
+├── galeria.html
+├── contacto.html
+├── cards.html
 ├── css/
 │   └── styles.css
+│   └── galeria.css
+│   └── cards.css
+│   └── contacto.css
 ├── img/
 │   └── galeria/
 ├── README.md
@@ -20,8 +26,11 @@ pagina-hardware/
 
 ## 👥 Trabajo en equipo
 Cada integrante trabaja en su propia rama. Ejemplos:
-- `home-nombre`
-- `cards-nombre`
+- `home-juan`
+- `cards-ivo`
+- `contacto-andy`
+- `galeria-paco`
+- `navbar/footer-lautaro`
 
 ### Pasos:
 1. Crear tu rama: `git checkout -b tu-rama`
@@ -45,4 +54,3 @@ Cada integrante trabaja en su propia rama. Ejemplos:
 ---
 
 💡 Consejo: Usá comentarios en HTML y CSS para mantener todo ordenado 😉
-
