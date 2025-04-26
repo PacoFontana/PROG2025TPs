@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>punto1-tp2</title>
+</head>
+<body>
+    <main>
+        <h1 id="tituloPrincipal">hola</h1>
+        <p class="parrafo">hola soy un parrafo</p>
+        <p class="parrafo">soy el hermano del de arriba</p>
+        <div id="contenedor">
+            <ul>
+                <li>Primer item</li>
+                <li>Segundo item</li>
+                <li>Tercer item</li>
+            </ul>
+
+        </div>
+
+    </main>
+        <script>
+            // primer punto
+            const titulo = document.getElementById("tituloPrincipal");
+            titulo.textContent = "titulo cambiado con js";
+        
+            // segundo punto
+            const parrafos = document.getElementsByClassName("parrafo");
+            for (let i = 0; i < parrafos.length; i++) {
+            parrafos[i].style.color = "blue";
+            }
+        
+            // tercer punto
+            const items = document.querySelectorAll("#contenedor li");
+            items.forEach(item => {
+            item.textContent += " texto nuevo";
+            });
+        </script>
+        
+    
+</body>
+</html>

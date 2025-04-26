@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: #101010;
+            color: #ffffff;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 200px;
+            width: 100vw;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        #task {
+            height: 30px;
+            border: 2px solid #0b4605;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        #task:focus {
+            outline: none;
+        }
+
+        #task::placeholder {
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #0b4605;
+            border: none;
+            border-radius: 15px;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        li {
+            list-style: none;
+            margin: 20px 0;
+            width: auto;
+            height: auto;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .completado {
+            text-decoration: line-through;
+            color: #808080;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <form id="form">
+        <input type="text" id="task" placeholder="Escribe una tarea" required>
+        <button type="submit">Añadir</button>
+    </form>
+    <ul id="taskList">
+        <!-- aca se a;aden las tareas -->
+    </ul>
+    <script>
+        const formulario = document.getElementById('form');
+        const taskList = document.getElementById('taskList');
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const taskInput = document.getElementById('task').value;
+
+            if (taskInput && taskInput.length <= 50) {
+                const li = document.createElement('li');
+                li.textContent = taskInput;
+                taskList.appendChild(li);
+                document.getElementById('task').value = '';
+            }
+        });
+
+        taskList.addEventListener('click', function (event) {
+            if (event.target.tagName === 'LI') {
+                event.target.classList.toggle('completado');
+            }
+        }
+        );
+    </script>
+</body>
+
+</html>

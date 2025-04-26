@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto Nro 3</title>
+    <style>
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            background-color: #0026ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .parrafo {
+            font-family: Tahoma, sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #007acc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .ocultar {
+            display: none;
+        }
+
+        .resaltar {
+            background-color: #ffa600;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <p class="parrafo"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam pariatur consequuntur
+            aliquid, labore iste accusamus voluptate maiores modi quam officiis a reprehenderit harum cupiditate quo
+            doloribus ipsam dolorum aspernatur doloremque.</p>
+
+        <p class="parrafo"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime voluptatum mollitia
+            distinctio aperiam! Vero, nostrum. Rerum natus blanditiis aperiam laudantium, ab modi fugiat cum! Incidunt
+            recusandae animi fugit molestias officia!</p>
+
+        <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore optio, qui id blanditiis nam
+            soluta libero quisquam labore, quaerat itaque vero harum esse corrupti obcaecati. Deleniti inventore
+            recusandae dolore eveniet.</p>
+    </div>
+
+    <div class="botones">
+        <button type="button" id="boton-ocultar">Ocultar</button>
+        <button type="button" id="boton-resaltar">Resaltar</button>
+    </div>
+
+    <script>
+        const boton_ocultar = document.getElementById('boton-ocultar');
+        const boton_resaltar = document.getElementById('boton-resaltar');
+
+        boton_ocultar.addEventListener('click', () => {
+            const parrafos = document.getElementsByClassName('parrafo');
+            for (let p of parrafos) {
+                p.classList.add('ocultar');
+            }
+        });
+
+        boton_resaltar.addEventListener('click', () => {
+            const parrafos = document.getElementsByClassName('parrafo');
+            for (let p of parrafos) {
+                p.classList.add('resaltar');
+            }
+        });
+    </script>
+</body>
+
+</html>

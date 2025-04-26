@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P5 - Validacion de formularios</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+        body {
+            font-family: Poppins, sans-serif;
+            padding: 20px;
+        }
+
+        .grupo-formulario {
+            margin-bottom: 15px;
+        }
+
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .grupo-formulario input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .mensaje-error {
+            display: block;
+            color: red;
+            font-size: 15px;
+            height: 15px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="formulario">
+        <div class="grupo-formulario">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" />
+            <span class="mensaje-error" id="error-nombre"></span>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="correo">Correo electrónico</label>
+            <input type="text" id="correo" name="correo" />
+            <span class="mensaje-error" id="error-correo"></span>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" />
+            <span class="mensaje-error" id="error-edad"></span>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const formulario = document.getElementById("formulario");
+            const nombre = document.getElementById("nombre");
+            const correo = document.getElementById("correo");
+            const edad = document.getElementById("edad");
+
+            formulario.addEventListener("submit", function (e) {
+                e.preventDefault();   // evitar envio automatico
+                let esValido = true;
+
+                // Limpiar errores anteriores
+                limpiarError(nombre);
+                limpiarError(correo);
+                limpiarError(edad);
+
+                // Validar nombre
+                if (nombre.value.trim() === "") {
+                    mostrarError(nombre, "El nombre es obligatorio.");
+                    esValido = false;
+                }
+
+                // Validar correo
+                if (correo.value.trim() === "") {
+                    mostrarError(correo, "El correo electronico es obligatorio.");
+                    esValido = false;
+                } else if (!correoValido(correo.value)) {
+                    mostrarError(correo, "Formato de correo invalido.");
+                    esValido = false;
+                }
+
+                // Validar edad
+                if (edad.value.trim() === "") {
+                    mostrarError(edad, "La edad es obligatoria.");
+                    esValido = false;
+                } else if (isNaN(edad.value) || Number(edad.value) <= 18) {
+                    mostrarError(edad, "Debes ser mayor de 18 años.");
+                    esValido = false;
+                }
+
+                console.log("Resultado de validacion:", esValido);
+
+                if (esValido) {
+                    alert("Formulado enviado!");
+                    formulario.submit();
+                }
+            });
+
+            // Muestra mensaje de error debajo del campo
+            function mostrarError(campo, mensaje) {
+                const errorEl = document.getElementById(`error-${campo.id}`);
+                errorEl.textContent = mensaje;
+            }
+
+            // Limpia el mensaje de error de un campo
+            function limpiarError(campo) {
+                const errorEl = document.getElementById(`error-${campo.id}`);
+                errorEl.textContent = "";
+            }
+
+            // Comprueba que el correo tenga formato valido
+            function correoValido(valor) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(valor);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
