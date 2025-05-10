@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ejercicio 1</title>
+</head>
+<body>
+
+    <h1 id="tituloPrincipal">titulo original</h1>
+
+    
+    <p class="parrafo">primer párrafo.</p>
+    <p class="parrafo">segundo párrafo.</p>
+
+    <div id="contenedor">
+        <ul>
+            <li>Elemento A</li>
+            <li>Elemento B</li>
+            <li>Elemento C</li>
+        </ul>
+    </div>
+
+    
+    <script>
+       
+        const titulo = document.getElementById("tituloPrincipal");
+        titulo.textContent = "titulo modificado";
+
+        const parrafos = document.getElementsByClassName("parrafo");
+        for (let i = 0; i < parrafos.length; i++) {
+            parrafos[i].style.color = "green";
+        }
+
+        const elementosLista = document.querySelectorAll("#contenedor ul li");
+        elementosLista.forEach((item, index) => {
+            item.textContent += " - ítem número " + (index + 1);
+        });
+    </script>
+
+</body>
+</html>
