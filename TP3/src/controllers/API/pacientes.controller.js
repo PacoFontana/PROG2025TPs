@@ -42,12 +42,16 @@ class PacientesController {
   }
 
   async create(req, res) {
-    const { dni, nombre, apellido, email } = req.body;
+    try {
+      const { dni, nombre, apellido, email } = req.body;
+      const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
 
-    const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
-
-    const info = await pacientesModel.create(nuevoPaciente);
-    res.status(200).json(info);
+      const info = await pacientesModel.create(nuevoPaciente);
+      res.status(200).json(info);
+    }
+    catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   }
 
   async delete(req, res) {

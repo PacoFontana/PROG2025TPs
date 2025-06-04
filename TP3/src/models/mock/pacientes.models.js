@@ -62,28 +62,29 @@ class PacientesModel {
     });
   }
 
+  //Valida si ya hay algun paciente con ese email y dni
+  existePaciente(email, dni) {
+    return this.data.some(paciente => paciente.email === email || paciente.dni === dni);
+  }
   // crea un dato nuevo (alta de cliente)
   create(paciente) {
-    //TODO: verificar que no sea nulo si es nulo tierar excepcion
 
     //return persona;
     return new Promise((resolve, reject) => {
       try {
         paciente.id = this.id;
-        this.id++;
-        const pacienteEncontrado = this.data.find(p => p.email === paciente.email)
-        if (!pacienteEncontrado) {
-          this.data.push(paciente);
-        } else {
-          throw new Error("el paciente ya existe")
+        const pacienteEncontrado = this.existePaciente(paciente.email, paciente.dni);
+
+        if (pacienteEncontrado) {
+          throw new Error("El paciente ya existe");
         }
 
-
-        resolve(paciente);
+        paciente.id = this.id++;
+        this.data.push(paciente);
+        resolve({mensaje: "Paciente creado correctamente", paciente: paciente});
       } catch (error) {
         reject(error);
       }
-
     });
   }
   // actualiza los datos del cliente con id = id
@@ -106,6 +107,7 @@ class PacientesModel {
     })
 
   }
+
   // elimina el cliente con id = id
 delete(id) {
   return new Promise((resolve, reject) => {
