@@ -93,9 +93,15 @@ class PacientesModel {
       try {
 
         const pacienteEncontrado = this.data.find((p) => p.id == id);
+        const pacienteClonado = this.existePaciente(paciente.email, paciente.dni);
+        
         if (pacienteEncontrado === null) {
           throw new Error("No se encuntra el paciente");
         }
+        if (pacienteClonado && pacienteClonado.id !== pacienteEncontrado.id) {
+          throw new Error("Ya existe un paciente con ese email o dni");
+        }
+
         pacienteEncontrado.dni = paciente.dni;
         pacienteEncontrado.email = paciente.email;
         pacienteEncontrado.nombre = paciente.nombre;

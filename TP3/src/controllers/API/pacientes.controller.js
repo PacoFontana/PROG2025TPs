@@ -66,12 +66,24 @@ class PacientesController {
     }
   }
 
-  update(req, res) {
-    const id = req.params.id;
-    const { dni, nombre, apellido, email } = req.body;
-    const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
-    pacientesModel.update(id, nuevoPaciente);
-    res.status(200).json({ message: "actualizado" });
+  async update(req, res) {
+    try {
+      const id = req.params.id;
+      const { dni, nombre, apellido, email } = req.body;
+      
+      const pacienteExistente = await pacientesModel.getPacienteById(id);
+      if (!pacienteExistente) {
+        return res.status(404).json({ message: "Paciente no encontrado" });
+      }
+
+      const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
+      await pacientesModel.update(id, nuevoPaciente);
+      res.status(200).json({ message: "Paciente actualizado correctamente" });
+    }
+    catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+
   }
 }
 
