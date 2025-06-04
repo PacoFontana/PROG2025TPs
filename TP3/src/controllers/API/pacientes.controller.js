@@ -8,19 +8,37 @@ class PacientesController {
       const { email, password } = req.body;
 
       const token = await pacientesModel.validate(email, password);
-    
-        res.status(200).json(token);
-        
+      res.status(200).json(token);
 
-
-    
     } catch (error) {
       res.status(401).json({ message: error.message });
     }
   }
 
   async list(req, res) {
-    res.status(200).json(await pacientesModel.list());
+    try {
+      const pacientes = await pacientesModel.list();
+
+      if (pacientes.length === 0) {
+        return res.status(404).json({ message: "No hay pacientes registrados" });
+      }
+      res.status(200).json(pacientes);
+    }
+    catch (error) {
+      res.status(500).json({ message: "Error al obtener la lista de pacientes" });
+    }
+  }
+
+  async getById(req, res) {
+    const id = req.params.id;
+
+    try {
+      const paciente = await pacientesModel.getPacienteById(id);
+      res.status(200).json(paciente);
+    }
+    catch (error) {
+      res.status(404).json({ error: error.message });
+    }
   }
 
   async create(req, res) {
@@ -32,18 +50,16 @@ class PacientesController {
     res.status(200).json(info);
   }
 
-  delete(req, res) {
-    const id = req.params.id;
+  async delete(req, res) {
+    const id = req.params.id
 
-    const pacienteBorrado = pacientesModel.delete(id)   ;
-    pacienteBorrado.then(paciente=>{
-        res.status(200).json(paciente);
-    }).catch(
-        error=>{
-            res.status(404).json({message:`no existe el paciente conh el id:${id}`,error})}
-        
-    );
-
+    try {
+      const resultado = await pacientesModel.delete(id)
+      res.status(200).json(resultado)
+    }
+    catch (error) {
+      res.status(404).json({ error: error.message });
+    }
   }
 
   update(req, res) {

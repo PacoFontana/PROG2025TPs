@@ -35,7 +35,7 @@ class PacientesModel {
       }
     });
   }
-  
+
   validate(email, password) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -68,82 +68,85 @@ class PacientesModel {
 
     //return persona;
     return new Promise((resolve, reject) => {
-      try{
+      try {
         paciente.id = this.id;
         this.id++;
-        const pacienteEncontrado = this.data.find(p=>p.email===paciente.email)
-        if(!pacienteEncontrado){
+        const pacienteEncontrado = this.data.find(p => p.email === paciente.email)
+        if (!pacienteEncontrado) {
           this.data.push(paciente);
-        }else{
+        } else {
           throw new Error("el paciente ya existe")
         }
-            
+
 
         resolve(paciente);
-      }catch(error){
+      } catch (error) {
         reject(error);
       }
- 
+
     });
   }
   // actualiza los datos del cliente con id = id
   update(id, paciente) {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
       try {
 
-         const pacienteEncontrado = this.data.find((p) => p.id == id);
-      if (pacienteEncontrado===null) {
-        throw new Error("No se encuntra el paciente");
+        const pacienteEncontrado = this.data.find((p) => p.id == id);
+        if (pacienteEncontrado === null) {
+          throw new Error("No se encuntra el paciente");
+        }
+        pacienteEncontrado.dni = paciente.dni;
+        pacienteEncontrado.email = paciente.email;
+        pacienteEncontrado.nombre = paciente.nombre;
+        pacienteEncontrado.apellido = paciente.apellido;
+        resolve(pacienteEncontrado);
+      } catch (error) {
+        reject(error);
       }
-      pacienteEncontrado.dni = paciente.dni;
-      pacienteEncontrado.email = paciente.email;
-      pacienteEncontrado.nombre = paciente.nombre;
-      pacienteEncontrado.apellido = paciente.apellido;
-      resolve(pacienteEncontrado);
+    })
+
+  }
+  // elimina el cliente con id = id
+delete(id) {
+  return new Promise((resolve, reject) => {
+    try {
+      const identificador = Number(id);
+      const index = this.data.findIndex(paciente => paciente.id === identificador);
+
+      if (index === -1) {
+        throw new Error('Paciente no encontrado');
+      }
+
+      this.data.splice(index, 1);
+      resolve({ mensaje: 'Paciente eliminado correctamente' });
     } catch (error) {
       reject(error);
     }
-    })
-    
-  }
-  // elimina el cliente con id = id
-  delete(id) {
-    new Promise((resolve,reject)=>{
-      try {
-       const pacienteEncontrado = this.data.find((p) => p.id == id);
-       if(!pacienteEncontrado){
-         throw new Error("el id no es válido");
-       }
-       const pos = this.data.indexOf(pacienteEncontrado);
-       this.data.splice(pos, 1);
-       resolve(pacienteEncontrado); // elimina el elemento de la posición pos del arreglo
-      } catch (error) {
-       reject(error);
-    }
-    })
+  });
+}
 
-   
-  }
   // devuelve la lista completa en un arreglo de strings
   list() {
     return new Promise((resolve, reject) => {
       resolve(this.data);
     });
   }
-  getPacienteById(id){
-     return new Promise((resolve,reject)=>{
-       try{
-         const identificador = Number(id);
-         const pacienteEncontrado = this.data.find(paciente=>paciente.id === identificador)
-       if(!pacienteEncontrado){
-           throw new Error("el id es incorrecto");
-       }
+
+  getPacienteById(id) {
+    return new Promise((resolve, reject) => {
+      try {
+        const identificador = Number(id);
+        const pacienteEncontrado = this.data.find(paciente => paciente.id === identificador);
+
+        if (!pacienteEncontrado) {
+          throw new Error("No se encontró el paciente con el id proporcionado");
+        }
+
         resolve(pacienteEncontrado);
-       }catch(error){
-         reject(error)
-       }
-      
-     })
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 }
 

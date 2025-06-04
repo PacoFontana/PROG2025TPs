@@ -8,6 +8,7 @@ const  {verifyTokenMiddleware}  = require('../middlewares/verifyToken.middleware
 //const rutaPacientes = Router();
 
 rutaPacientes.post('/login', pacientesController.login);
+rutaPacientes.get('/:id', verifyTokenMiddleware, pacientesController.getById);
 rutaPacientes.get('/', verifyTokenMiddleware, pacientesController.list);
 rutaPacientes.post('/',verifyTokenMiddleware,pacientesController.create);
 rutaPacientes.put('/:id',verifyTokenMiddleware,pacientesController.update);
