@@ -71,6 +71,9 @@ class PacientesController {
       const id = req.params.id;
       const { dni, nombre, apellido, email } = req.body;
       
+      if (!dni || !nombre || !apellido || !email) {
+        return res.status(400).json({ message: "Todos los campos son obligatorios" });
+      }
       const pacienteExistente = await pacientesModel.getPacienteById(id);
       if (!pacienteExistente) {
         return res.status(404).json({ message: "Paciente no encontrado" });
