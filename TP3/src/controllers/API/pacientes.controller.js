@@ -8,7 +8,7 @@ class PacientesController {
       const { email, password } = req.body;
 
       const token = await pacientesModel.validate(email, password);
-      res.status(200).json(token);
+      res.status(200).json({ token });
 
     } catch (error) {
       res.status(401).json({ message: error.message });
@@ -43,11 +43,11 @@ class PacientesController {
 
   async create(req, res) {
     try {
-      const { dni, nombre, apellido, email } = req.body;
-      const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
+      const { dni, nombre, apellido, email, password } = req.body;
+      const nuevoPaciente = new Paciente(dni, nombre, apellido, email, password);
 
       const info = await pacientesModel.create(nuevoPaciente);
-      res.status(200).json(info);
+      res.status(201).json(info);
     }
     catch (error) {
       res.status(400).json({ error: error.message });
@@ -71,9 +71,6 @@ class PacientesController {
       const id = req.params.id;
       const { dni, nombre, apellido, email } = req.body;
       
-      if (!dni || !nombre || !apellido || !email) {
-        return res.status(400).json({ message: "Todos los campos son obligatorios" });
-      }
       const pacienteExistente = await pacientesModel.getPacienteById(id);
       if (!pacienteExistente) {
         return res.status(404).json({ message: "Paciente no encontrado" });

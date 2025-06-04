@@ -6,13 +6,32 @@ class TurnosModel {
         this.id = 1;
     }
 
+    existeTurno(idPaciente, fecha, hora) {
+        return this.data.some(turno =>
+            turno.idPaciente === idPaciente &&
+            turno.fecha === fecha &&
+            turno.hora === hora
+        );
+    }
 
-    // Crear un nuevo turno
-    create(turno){
+    list() {
         return new Promise((resolve, reject) => {
             try {
-                if (!turno.fecha || !turno.hora || !turno.idPaciente){
+                resolve(this.data);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+    // Crear un nuevo turno
+    create(turno) {
+        return new Promise((resolve, reject) => {
+            try {
+                if (!turno.fecha || !turno.hora || !turno.idPaciente) {
                     throw new Error("Faltan datos del turno");
+                }
+                if (this.existeTurno(turno.idPaciente, turno.fecha, turno.hora)) {
+                    throw new Error("Ya existe un turno para este paciente en esta fecha y hora");
                 }
                 turno.id = this.id++;
                 this.data.push(turno);
@@ -24,7 +43,7 @@ class TurnosModel {
     }
 
     //Buscar todos los turnos de un paciente
-    findPacienteById(idPaciente){
+    findByPacienteById(idPaciente) {
         return new Promise((resolve, reject) => {
             try {
                 const id = Number(idPaciente);
@@ -35,9 +54,36 @@ class TurnosModel {
             }
         });
     }
-    
+
+    findByTurnoId(id) {
+        return new Promise((resolve, reject) => {
+            const turno = this.data.find(t => t.id === Number(id));
+            turno ? resolve(turno) : reject(new Error('Turno no encontrado'));
+        });
+    }
+
+    update(id, datos) {
+        return new Promise((resolve, reject) => {
+            try {
+                if (!datos.fecha || !datos.hora || !datos.idPaciente) {
+                    throw new Error("Faltan datos del turno");
+                }
+                if (this.existeTurno(datos.idPaciente, datos.fecha, datos.hora)) {
+                    throw new Error("Ya existe un turno para este paciente en esta fecha y hora");
+                }
+
+                const turno = this.data.find(t => t.id === Number(id));
+                if (!turno) return reject(new Error('Turno no encontrado'));
+                Object.assign(turno, datos);
+                resolve(turno);
+            }
+            catch (error) {
+                reject(error);
+            }
+        });
+    }
     //Eliminar turno por ID
-    deleteById(idTurno){
+    deleteById(idTurno) {
         return new Promise((resolve, reject) => {
             try {
                 const id = Number(idTurno);

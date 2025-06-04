@@ -26,7 +26,7 @@ class PacientesModel {
         const paciente = this.data.find(
           (p) => p.email === email && p.password === password
         );
-        if (paciente === null) {
+        if (!paciente) {
           throw new Error("el paciente no existe");
         }
         resolve(paciente);
@@ -47,7 +47,7 @@ class PacientesModel {
 
         //payload, secreto, tiempo de expiracion
         const payload = {
-          userId: userFound._id,
+          userId: userFound.id,
           userEmail: userFound.email,
         };
         console.log("palabra secreta, pacientes model:", Config.secreteWord);
@@ -81,7 +81,7 @@ class PacientesModel {
 
         paciente.id = this.id++;
         this.data.push(paciente);
-        resolve({mensaje: "Paciente creado correctamente", paciente: paciente});
+        resolve({ mensaje: "Paciente creado correctamente", paciente: paciente });
       } catch (error) {
         reject(error);
       }
@@ -94,7 +94,7 @@ class PacientesModel {
 
         const pacienteEncontrado = this.data.find((p) => p.id == id);
         const pacienteClonado = this.existePaciente(paciente.email, paciente.dni);
-        
+
         if (pacienteEncontrado === null) {
           throw new Error("No se encuntra el paciente");
         }
@@ -115,23 +115,23 @@ class PacientesModel {
   }
 
   // elimina el cliente con id = id
-delete(id) {
-  return new Promise((resolve, reject) => {
-    try {
-      const identificador = Number(id);
-      const index = this.data.findIndex(paciente => paciente.id === identificador);
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      try {
+        const identificador = Number(id);
+        const index = this.data.findIndex(paciente => paciente.id === identificador);
+        const paciente = this.data.find(paciente => paciente.id === identificador);
+        if (index === -1) {
+          throw new Error('Paciente no encontrado');
+        }
 
-      if (index === -1) {
-        throw new Error('Paciente no encontrado');
+        this.data.splice(index, 1);
+        resolve({ mensaje: 'Paciente eliminado correctamente', paciente: paciente });
+      } catch (error) {
+        reject(error);
       }
-
-      this.data.splice(index, 1);
-      resolve({ mensaje: 'Paciente eliminado correctamente' });
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
+    });
+  }
 
   // devuelve la lista completa en un arreglo de strings
   list() {

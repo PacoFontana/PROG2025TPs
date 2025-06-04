@@ -1,5 +1,8 @@
-class Turno {
+const Identificador = require("./identificador.entity");
+
+class Turno extends Identificador {
     constructor(idPaciente, fecha, hora) {
+        super(id); // Llama al constructor de Identificador
         this.idPaciente = idPaciente;
         this.fecha = fecha; // formato: 'YYYY-MM-DD'
         this.hora = hora;   // formato: 'HH:mm'
