@@ -1,11 +1,11 @@
 {
   "name": "practico3progra3",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch ./src/index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,14 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "pug": "^3.0.3",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
