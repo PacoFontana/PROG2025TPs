@@ -1,7 +1,7 @@
 const joi = require('joi');
 
 const turnoSchema = joi.object({
-  idPaciente: joi.string().required().messages({
+  idPaciente: joi.string().pattern(/^\d+$/).required().messages({
     'any.required': 'El ID del paciente es obligatorio',
     'string.base': 'El ID del paciente debe ser un texto'
   }),
@@ -21,7 +21,6 @@ const validarTurno = (req, res, next) => {
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
-
   next();
 }
 module.exports = validarTurno;

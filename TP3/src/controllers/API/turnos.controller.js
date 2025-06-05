@@ -2,11 +2,23 @@ const turnosModel = require("./../../models/mock/turnos.models.js");
 const Turno = require("./../../models/mock/entities/turno.entity.js");
 
 class TurnosController {
+  // GET /api/v1/turnos
+  async getTurnos(req, res) {
+    try {
+      const turnos = await turnosModel.list();
+      if (turnos.length === 0) {
+        return res.status(404).json({ mensaje: 'No hay turnos registrados' });
+      }
+      res.status(200).json(turnos);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
   // GET /api/v1/turnos/:idPaciente
   async getTurnosPorPaciente(req, res) {
     const { idPaciente } = req.params;
     try {
-      const turnos = await turnosModel.findByPacienteId(idPaciente);
+      const turnos = await turnosModel.findByPacienteById(idPaciente);
       if (turnos.length === 0) {
         return res.status(404).json({ mensaje: 'Este paciente no tiene turnos registrados' });
       }
@@ -19,8 +31,8 @@ class TurnosController {
   // POST /api/v1/turnos
   async crearTurno(req, res) {
     try {
-      const { fecha, hora, idPaciente } = req.body;
-      const nuevoTurno = new Turno(fecha, hora, idPaciente);
+      const { idPaciente, fecha, hora } = req.body;
+      const nuevoTurno = new Turno(idPaciente, fecha, hora);
       const turnoCreado = await turnosModel.create(nuevoTurno);
       res.status(201).json({ mensaje: 'Turno creado correctamente', turno: turnoCreado });
     } catch (error) {

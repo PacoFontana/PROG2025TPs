@@ -27,12 +27,10 @@ class TurnosModel {
     create(turno) {
         return new Promise((resolve, reject) => {
             try {
-                if (!turno.fecha || !turno.hora || !turno.idPaciente) {
-                    throw new Error("Faltan datos del turno");
-                }
                 if (this.existeTurno(turno.idPaciente, turno.fecha, turno.hora)) {
                     throw new Error("Ya existe un turno para este paciente en esta fecha y hora");
                 }
+
                 turno.id = this.id++;
                 this.data.push(turno);
                 resolve(turno);
@@ -42,18 +40,20 @@ class TurnosModel {
         });
     }
 
+
     //Buscar todos los turnos de un paciente
     findByPacienteById(idPaciente) {
         return new Promise((resolve, reject) => {
             try {
                 const id = Number(idPaciente);
-                const turnos = this.data.filter(t => t.idPaciente === id);
+                const turnos = this.data.filter(t => t.idPaciente == id);
                 resolve(turnos);
             } catch (error) {
                 reject(error);
             }
         });
     }
+
 
     findByTurnoId(id) {
         return new Promise((resolve, reject) => {
@@ -98,4 +98,6 @@ class TurnosModel {
             }
         });
     }
-}    
+}
+
+module.exports = new TurnosModel();
