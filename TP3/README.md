@@ -74,3 +74,18 @@ Realizado para el TP3.
 Usá Postman para probar los endpoints.  
 Primero generar el token en el header para los endpoints protegidos:
 
+---
+
+##  Middleware
+
+- `verifyTokenMiddleware`: protege rutas privadas
+- `validarPaciente`, `validarTurno`: validan datos con Joi
+
+---
+
+## Instalación y uso
+
+```bash
+npm install
+npm run start
+
