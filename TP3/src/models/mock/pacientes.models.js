@@ -62,6 +62,10 @@ class PacientesModel {
     });
   }
 
+  existePacienteID(id) {
+    return this.data.some(paciente => paciente.id == id);
+  }
+
   //Valida si ya hay algun paciente con ese email y dni
   existePaciente(email, dni) {
     return this.data.some(paciente => paciente.email === email || paciente.dni === dni);
@@ -155,6 +159,37 @@ class PacientesModel {
         reject(error);
       }
     });
+  }
+}
+
+async function obtenerListadoPacientes() {
+  try {
+    const pacientes = await pacientesModel.list();
+    const turnos = await turnosModel.list();
+
+    const resultado = pacientes.map(paciente => {
+      const turnosDelPaciente = turnos
+        .filter(turno => Number(turno.idPaciente) === paciente.id)
+        .map(turno => ({
+          id: turno.id,
+          fecha: turno.fecha,
+          hora: turno.hora
+        }));
+
+      return {
+        id: paciente.id,
+        dni: paciente.dni,
+        nombre: paciente.nombre,
+        apellido: paciente.apellido,
+        email: paciente.email,
+        turnos: turnosDelPaciente
+      };
+    });
+
+    return resultado;
+  } catch (error) {
+    console.error('Error al obtener pacientes:', error);
+    throw error;
   }
 }
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Turnos</title>
+    <link rel="stylesheet" href="/stylesheets/turno.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="container">
+        <h1>Turnos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Paciente</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% turnos.forEach(turno => { %>
+                <tr>
+                    <td data-label="Fecha"><%= turno.fecha %></td>
+                    <td data-label="Hora"><%= turno.hora %></td>
+                    <td data-label="Paciente">
+                        <%= turno.paciente ? turno.paciente.nombre : 'Disponible' %>
+                    </td>
+                    <td data-label="Acciones">
+                        <% if (turno.paciente) { %>
+                            <form method="POST" action="/turnos/cancelar/<%= turno.id %>" style="display:inline;">
+                                <button type="submit">Cancelar</button>
+                            </form>
+                        <% } else { %>
+                            Disponible
+                        <% } %>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/turnos/nuevo" class="btn btn-primary">Crear Turno</a>
+    </div>
+</body>
+</html>

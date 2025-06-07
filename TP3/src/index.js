@@ -1,20 +1,32 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const port = 3000;
+const path = require('path');
 
-const rutaPacientes = require('./routes/pacientes.route.js'); 
-const rutaTurnos = require('./routes/turnos.route.js'); // Importar la ruta de turnos
+// Config EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Middlewares y parsers
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/v1/pacientes', rutaPacientes);
-app.use('/api/v1/turnos', rutaTurnos);
+// Rutas
+const turnosApiRoutes = require('./routes/api/turnos.api');
+const turnosWebRoutes = require('./routes/web/turnos.web');
+const pacientesApiRoutes = require('./routes/api/pacientes.api');
+const pacientesWebRoutes = require('./routes/web/pacientes.web');
 
-// Ruta de prueba
-app.get("/", (req, res) => {
-    res.send("API Turnos Médicos funcionando ✅");
+app.use('/api/turnos', turnosApiRoutes);
+app.use('/turnos', turnosWebRoutes);
+app.use('/api/pacientes', pacientesApiRoutes);
+app.use('/pacientes', pacientesWebRoutes);
+
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+// Levantar servidor
+app.listen(3000, () => {
+    console.log('Servidor iniciado en http://localhost:3000');
 });

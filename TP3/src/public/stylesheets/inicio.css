@@ -1,0 +1,39 @@
+/* Paleta de grises */
+:root {
+    --gris-oscuro: #2f2f2f;
+    --gris-medio: #6b6b6b;
+    --gris-claro: #e0e0e0;
+    --blanco: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+}
+
+.main-content {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.main-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.main-content p {
+    font-size: 1.2rem;
+    color: var(--gris-medio);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+}

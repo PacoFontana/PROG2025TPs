@@ -1,0 +1,125 @@
+/* Paleta de grises */
+:root {
+    --gris-oscuro: #2f2f2f;
+    --gris-medio: #6b6b6b;
+    --gris-claro: #e0e0e0;
+    --blanco: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* centra horizontalmente */
+    width: 100%;
+}
+
+/* Centrar el título */
+h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #222;
+    margin-bottom: 1.5rem;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+
+thead tr {
+    background: #eee;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Última fila sin border */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Botón */
+button {
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover,
+button:focus {
+    background: #555;
+    outline: none;
+}
+
+/* Responsive para móvil */
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.05);
+        padding: 1rem;
+    }
+
+    td {
+        padding-left: 50%;
+        position: relative;
+        text-align: right;
+        border-bottom: 1px solid #eee;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: #777;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    td:last-child {
+        border-bottom: none;
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+    /* Form inline */
+    form {
+        display: inline;
+    }

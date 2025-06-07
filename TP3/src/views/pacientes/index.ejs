@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Pacientes</title>
+    <link rel="stylesheet" href="/stylesheets/paciente.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>Listado de Pacientes</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Turnos</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% pacientes.forEach(paciente => { %>
+            <tr>
+            <td><%= paciente.id %></td>
+            <td><%= paciente.dni %></td>
+            <td><%= paciente.nombre %></td>
+            <td><%= paciente.apellido %></td>
+            <td><%= paciente.email %></td>
+            <td>
+                <div class="turnos">
+                <% if (paciente.turnos.length > 0) { %>
+                    <% paciente.turnos.forEach(turno => { %>
+                    <div class="turno">
+                        <strong>Fecha:</strong> <%= turno.fecha %> -
+                        <strong>Hora:</strong> <%= turno.hora %>
+                    </div>
+                    <% }) %>
+                <% } else { %>
+                    <em>Sin turnos</em>
+                <% } %>
+                </div>
+            </td>
+            <td data-label="Acciones">
+                <form method="POST" action="/pacientes/eliminar/<%= paciente.id %>" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+            </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+    <a href="/pacientes/nuevo" class="btn btn-success">Nuevo Paciente</a>
+</body>
+</html>

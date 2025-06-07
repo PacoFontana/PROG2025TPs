@@ -1,5 +1,6 @@
 const turnosModel = require("./../../models/mock/turnos.models.js");
 const Turno = require("./../../models/mock/entities/turno.entity.js");
+const pacientesModel = require("./../../models/mock/pacientes.models.js");
 
 class TurnosController {
   // GET /api/v1/turnos
@@ -62,7 +63,43 @@ class TurnosController {
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
-  }
+  } 
 }
 
-module.exports = new TurnosController();
+async function obtenerListadoTurnos() {
+    try {
+      const turnos = await turnosModel.list();
+      const pacientes = await pacientesModel.list();
+
+      const resultado = turnos.map(turno => {
+        const paciente = pacientes.find(p => p.id === Number(turno.idPaciente));
+
+        const turnoConPaciente = {
+          id: turno.id,
+          fecha: turno.fecha,
+          hora: turno.hora
+        };
+
+        if (paciente) {
+          turnoConPaciente.paciente = {
+            id: paciente.id,
+            nombre: paciente.nombre
+          };
+        } else {
+          turnoConPaciente.paciente = null;
+        }
+
+        return turnoConPaciente;
+      });
+
+      return resultado;
+    } catch (error) {
+      console.error('Error al obtener turnos:', error);
+      throw error;
+    }
+}
+
+module.exports = {
+  controller: new TurnosController(),
+  obtenerListadoTurnos,
+};

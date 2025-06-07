@@ -1,4 +1,5 @@
 const Turno = require("./entities/turno.entity.js");
+const pacientesModel = require("./pacientes.models.js");
 
 class TurnosModel {
     constructor() {
@@ -23,6 +24,7 @@ class TurnosModel {
             }
         });
     }
+
     // Crear un nuevo turno
     create(turno) {
         return new Promise((resolve, reject) => {
@@ -30,7 +32,9 @@ class TurnosModel {
                 if (this.existeTurno(turno.idPaciente, turno.fecha, turno.hora)) {
                     throw new Error("Ya existe un turno para este paciente en esta fecha y hora");
                 }
-
+                if (!pacientesModel.existePacienteID(turno.idPaciente)){
+                    throw new Error("El paciente no existe");
+                }    
                 turno.id = this.id++;
                 this.data.push(turno);
                 resolve(turno);

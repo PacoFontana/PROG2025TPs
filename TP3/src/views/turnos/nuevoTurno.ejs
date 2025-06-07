@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Turno</title>
+    <link rel="stylesheet" href="/stylesheets/turno.css">
+</head>
+<body>
+    <h2>Nuevo Turno</h2>
+        <form action="/turnos/nuevo" method="POST">
+        <label for="idPaciente">Paciente:</label>
+        <select name="idPaciente" id="paciente" required>
+            <% pacientes.forEach(p => { %>
+            <option value="<%= p.id %>"><%= p.nombre %></option>
+            <% }) %>
+        </select>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" name="fecha" required>
+
+        <label for="hora">Hora:</label>
+        <input type="time" name="hora" required>
+
+        <button type="submit">Guardar Turno</button>
+    </form>
+</body>
+</html>

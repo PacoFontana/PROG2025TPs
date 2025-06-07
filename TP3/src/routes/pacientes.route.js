@@ -1,3 +1,4 @@
+/*
 const express = require('express')
 const rutaPacientes = express.Router();
 const pacientesController = require('../controllers/API/pacientes.controller.js');
@@ -19,3 +20,4 @@ rutaPacientes.delete('/:id',verifyTokenMiddleware,pacientesController.delete);
 
 
 module.exports = rutaPacientes;
+*/

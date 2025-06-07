@@ -1,5 +1,7 @@
 const pacientesModel = require("./../../models/mock/pacientes.models.js");
 const Paciente = require("./../../models/mock/entities/paciente.entity.js");
+const turnosModel = require('./../../models/mock/turnos.models.js');
+
 
 class PacientesController {
   async login(req, res) {
@@ -87,4 +89,36 @@ class PacientesController {
   }
 }
 
-module.exports = new PacientesController();
+async function obtenerListadoPacientes() {
+  try {
+    const pacientes = await pacientesModel.list();
+    const turnos = await turnosModel.list();
+
+    return pacientes.map(paciente => {
+      const turnosDelPaciente = turnos
+        .filter(turno => String(turno.idPaciente) === String(paciente.id))
+        .map(turno => ({
+          id: turno.id,
+          fecha: turno.fecha,
+          hora: turno.hora
+        }));
+
+      return {
+        id: paciente.id,
+        dni: paciente.dni,
+        nombre: paciente.nombre,
+        apellido: paciente.apellido,
+        email: paciente.email,
+        turnos: turnosDelPaciente
+      };
+    });
+  } catch (error) {
+    console.error('[obtenerListadoPacientes] Error:', error);
+    throw error;
+  }
+}
+
+module.exports = {
+  controller: new PacientesController(),
+  obtenerListadoPacientes,
+};
