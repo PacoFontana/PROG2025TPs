@@ -1,0 +1,59 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: #2a2d34;
+    display: flex;
+    gap: 24px;
+    padding: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.orden-tarjeta {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 1rem;
+}
+
+.caja-tarjeta {
+    border: 1px solid #1e1f24;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    background: #3c4a6b; 
+    color: #ffffff; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.caja-tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    border-color: #4a90e2;
+}
+
+.caja-tarjeta h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.caja-tarjeta p {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+    body {
+      flex-direction: column;
+      align-items: center;
+    }
+    .caja-tarjeta {
+      width: 90%;
+      max-width: 320px;
+    }
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import TarjetaPersona from './tarjetaPersona';
+import "./css/Tarjetas.css";
 
 const ListaTarjetas = ({ personas }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+    <div class="orden-tarjeta">
       {personas.map(p => (
         <TarjetaPersona key={p.id} persona={p} />
       ))}

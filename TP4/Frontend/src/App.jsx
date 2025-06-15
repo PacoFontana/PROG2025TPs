@@ -1,5 +1,6 @@
 import React from 'react';
 import TraerPersonas from './components/traerPersonas';
+import "./components/css/Tarjetas.css";
 
 function App() {
   return (
