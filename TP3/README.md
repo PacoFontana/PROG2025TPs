@@ -124,6 +124,7 @@ Primero generar el token en el header para los endpoints protegidos:
 
 ## Instalación y uso
 
+*CONFIGURAR EL .ENV CON LOS DATOS DEL .ENV.TEMPLATE*
 ```bash
 npm install
 npm run start
