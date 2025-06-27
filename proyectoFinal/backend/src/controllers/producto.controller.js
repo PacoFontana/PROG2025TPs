@@ -108,10 +108,38 @@ eliminarProducto = async (req, res) => {
     }
 }
 
+aumentarStock = async (req, res) => {
+    const producto = await Producto.findByPk(req.params.id);
+    if (!producto) {return res.status(404).json({mensaje: 'Producto no encontrado'});
+    }
+
+    producto.stock += 1;
+    await producto.save();  
+    res.status(200).json(producto);
+}
+
+disminuirStock = async (req, res) => {
+    const producto = await Producto.findByPk(req.params.id);
+    if (!producto) {return res.status(404).json({mensaje: 'Producto no encontrado'});
+    }
+
+    if (producto.stock > 0) {
+        producto.stock -= 1;
+        await producto.save();
+        res.status(200).json(producto);
+    } else {
+        res.status(400).json({mensaje: 'El stock no puede ser menor a 0'});
+    }
+}
+
+
+
 module.exports = {
     crearProducto,
     obtenerProductos,
     obtenerProductoPorId,
     actualizarProducto,
-    eliminarProducto
+    eliminarProducto,
+    aumentarStock,
+    disminuirStock
 };
