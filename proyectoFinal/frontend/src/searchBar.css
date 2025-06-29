@@ -1,0 +1,116 @@
+.search-bar-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 20px 50px;
+    width: 90vw;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-bar-container:hover {
+    background-color: #e2e2e2ef;
+}
+
+#search-bar {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: transparent;
+}
+
+#imagen-lupa {
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+    filter: drop-shadow(0 0 0.5px black);
+    stroke-width: 2;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 20px 50px;
+    width: calc(90vw - 50px);
+}
+
+.btn-crear-producto {
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.btn-crear-producto:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.btn-crear-producto:active {
+    transform: scale(0.95);
+}
+
+.btn-crear-producto img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.btn-eliminar-producto {
+    width: 50px;
+    height: 50px;
+    background-color: #f44336;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.btn-eliminar-producto:hover {
+    background-color: #da190b;
+    transform: scale(1.05);
+}
+
+.btn-eliminar-producto:active {
+    transform: scale(0.95);
+}
+
+.btn-eliminar-producto img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
