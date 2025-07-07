@@ -1,18 +1,18 @@
 import { useState, useCallback, useMemo } from 'react';
 import minusIcon from '../assets/minus.icon.svg';
 import plusIcon from '../assets/plus.icon.svg';
+import deleteIcon from '../assets/delete.icon.svg';
 import EditProductModal from './EditProductModal';
 import '../css/productos.css';
-import { aumentarStock, disminuirStock } from '../api/api';
+import { aumentarStock, disminuirStock, deleteProducto } from '../api/api';
 
-function ProductoCard({ nombreProducto = "NombreProducto", idProducto = "12345", precio = 12345, stock = 0, onProductoUpdated }) {
+function ProductoCard({ nombreProducto = "NombreProducto", idProducto = "12345", precio = 12345, stock = 0, onProductoUpdated, onProductoDeleted }) {
     const [currentStock, setCurrentStock] = useState(stock);
     const [currentNombre, setCurrentNombre] = useState(nombreProducto);
     const [currentPrecio, setCurrentPrecio] = useState(precio);
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Memoizar el objeto producto para evitar re-renders del modal
     const producto = useMemo(() => ({
         id: idProducto,
         nombre: currentNombre,
@@ -20,7 +20,6 @@ function ProductoCard({ nombreProducto = "NombreProducto", idProducto = "12345",
         stock: currentStock
     }), [idProducto, currentNombre, currentPrecio, currentStock]);
 
-    // Optimizar funciones con useCallback
     const handleAumentarStock = useCallback(async () => {
         if (loading) return;
         
@@ -62,11 +61,27 @@ function ProductoCard({ nombreProducto = "NombreProducto", idProducto = "12345",
         setCurrentPrecio(productoActualizado.precio);
         setCurrentStock(productoActualizado.stock);
         
-        // Callback del componente padre
         onProductoUpdated?.(productoActualizado);
     }, [onProductoUpdated]);
 
-    // Memoizar precio formateado
+    const handleDeleteClick = useCallback(async () => {
+        if (loading) return;
+
+        const confirmDelete = confirm(`¿Está seguro de que desea eliminar el producto "${currentNombre}"?`);
+        if (!confirmDelete) return;
+
+        try {
+            setLoading(true);
+            await deleteProducto(idProducto);
+            onProductoDeleted?.(idProducto);
+        } catch (error) {
+            console.error('Error eliminando producto:', error);
+            alert('Error al eliminar el producto. Intente nuevamente.');
+        } finally {
+            setLoading(false);
+        }
+    }, [idProducto, currentNombre, loading, onProductoDeleted]);
+
     const precioFormateado = useMemo(() => 
         `$${currentPrecio.toLocaleString()}`, 
         [currentPrecio]
@@ -82,32 +97,45 @@ function ProductoCard({ nombreProducto = "NombreProducto", idProducto = "12345",
                 </div>
 
                 <div className="producto-actions">
-                    <button 
-                        className="edit-button" 
-                        onClick={handleEditClick}
-                        disabled={loading}
-                    >
-                        Editar
-                    </button>
-                    <button 
-                        className="stock-button aumentar" 
-                        onClick={handleAumentarStock}
-                        disabled={loading}
-                        aria-label="Aumentar stock"
-                    >
-                        <img src={plusIcon} alt="" />
-                    </button>
-                    <span className="stock-valor" aria-label={`Stock actual: ${currentStock}`}>
-                        {currentStock}
-                    </span>
-                    <button 
-                        className="stock-button disminuir" 
-                        onClick={handleDisminuirStock}
-                        disabled={loading || currentStock <= 0}
-                        aria-label="Disminuir stock"
-                    >
-                        <img src={minusIcon} alt="" />
-                    </button>
+                    <div className="button-group">
+                        <button 
+                            className="edit-button" 
+                            onClick={handleEditClick}
+                            disabled={loading}
+                            title="Editar producto"
+                        >
+                            Editar
+                        </button>
+                        <button 
+                            className="delete-button" 
+                            onClick={handleDeleteClick}
+                            disabled={loading}
+                            title="Eliminar producto"
+                        >
+                            <img src={deleteIcon} alt="Eliminar" />
+                        </button>
+                    </div>
+                    <div className="stock-controls">
+                        <button 
+                            className="stock-button aumentar" 
+                            onClick={handleAumentarStock}
+                            disabled={loading}
+                            aria-label="Aumentar stock"
+                        >
+                            <img src={plusIcon} alt="" />
+                        </button>
+                        <span className="stock-valor" aria-label={`Stock actual: ${currentStock}`}>
+                            {currentStock}
+                        </span>
+                        <button 
+                            className="stock-button disminuir" 
+                            onClick={handleDisminuirStock}
+                            disabled={loading || currentStock <= 0}
+                            aria-label="Disminuir stock"
+                        >
+                            <img src={minusIcon} alt="" />
+                        </button>
+                    </div>
                 </div>
             </div>
 

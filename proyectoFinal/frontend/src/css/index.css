@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     font-family:sans-serif, Arial, Helvetica;
+    overflow-x: hidden;
 }
 
 /* Layout principal de dos columnas */
@@ -11,6 +12,9 @@ body{
     flex-direction: row;
     min-height: 100vh;
     gap: 0;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Columna izquierda - Solo categorías */
@@ -31,4 +35,30 @@ body{
     flex-direction: column;
     background-color: #111111;
     padding: 0;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* Responsive layout para pantallas pequeñas */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .categorias-aside {
+        width: 100%;
+        max-height: 200px;
+        order: 2;
+    }
+    
+    .content-main {
+        order: 1;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .categorias-aside {
+        max-height: 150px;
+    }
 }

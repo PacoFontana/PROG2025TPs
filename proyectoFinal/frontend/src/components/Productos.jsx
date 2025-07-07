@@ -1,64 +1,84 @@
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import ProductoCard from './ProductoCard'
 import '../css/productos.css'
-import { getProductos } from '../api/api';
 
-function Productos() {
-    const [productos, setProductos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+function Productos({ 
+    productos = [], 
+    loading = false, 
+    searchQuery = '', 
+    selectedCategory = null,
+    onProductosChanged,
+    onClearFilters
+}) {
+    
+    const handleProductoUpdated = useCallback((productoActualizado) => {
+        onProductosChanged?.()
+    }, [onProductosChanged]);
 
-    useEffect(() => {
-        const cargarProductos = async () => {
-            try {
-                setLoading(true);
-                const productosData = await getProductos();
-                setProductos(productosData);
-                setError(null);
-            } catch (err) {
-                console.error('Error cargando productos:', err);
-                setError('Error al cargar los productos');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        cargarProductos();
-    }, []);
+    const handleProductoDeleted = useCallback((productoId) => {
+        onProductosChanged?.()
+    }, [onProductosChanged]);
 
     if (loading) {
         return (
             <div className="productos-container">
                 <h2>Productos</h2>
-                <p>Cargando productos...</p>
+                <div className="loading-container">
+                    <p>Cargando productos...</p>
+                </div>
             </div>
         );
     }
 
-    if (error) {
-        return (
-            <div className="productos-container">
-                <h2>Productos</h2>
-                <p style={{color: 'red'}}>{error}</p>
-            </div>
-        );
+    const getTitle = () => {
+        const count = productos.length
+        const countText = count === 1 ? 'producto' : 'productos'
+        
+        if (selectedCategory && searchQuery) {
+            return `${count} ${countText} en "${selectedCategory}" que coinciden con "${searchQuery}"`
+        } else if (selectedCategory) {
+            return `${count} ${countText} en "${selectedCategory}"`
+        } else if (searchQuery) {
+            return `${count} ${countText} encontrados para "${searchQuery}"`
+        } else {
+            return `Todos los productos (${count})`
+        }
     }
 
     return (
         <div className="productos-container">
-            <h2>Productos</h2>
+            <h2>{getTitle()}</h2>
             {productos.length === 0 ? (
-                <p>No hay productos disponibles</p>
+                <div className="empty-state">
+                    <p>
+                        {selectedCategory || searchQuery 
+                            ? 'No se encontraron productos que coincidan con los filtros'
+                            : 'No hay productos disponibles'
+                        }
+                    </p>
+                    {(selectedCategory || searchQuery) && (
+                        <button 
+                            className="clear-filters-button"
+                            onClick={onClearFilters}
+                        >
+                            Limpiar filtros
+                        </button>
+                    )}
+                </div>
             ) : (
-                productos.map((producto) => (
-                    <ProductoCard
-                        key={producto.id}
-                        nombreProducto={producto.nombre}
-                        idProducto={producto.id}
-                        precio={producto.precio}
-                        stock={producto.stock}
-                    />
-                ))
+                <div className="productos-grid">
+                    {productos.map((producto) => (
+                        <ProductoCard
+                            key={`producto-${producto.id}`}
+                            nombreProducto={producto.nombre}
+                            idProducto={producto.id}
+                            precio={producto.precio}
+                            stock={producto.stock}
+                            onProductoUpdated={handleProductoUpdated}
+                            onProductoDeleted={handleProductoDeleted}
+                        />
+                    ))}
+                </div>
             )}
         </div>
     );
