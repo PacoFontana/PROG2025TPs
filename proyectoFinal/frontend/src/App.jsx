@@ -1,20 +1,19 @@
 import SearchBar from './components/SearchBar'
 import Categorias from './components/Categorias'
 import Productos from './components/Productos'
+import './css/index.css'
 
 function App() {
   return (
-    <>
-      <SearchBar />
-      <div className="main-layout">
-        <aside className="categorias-aside">
-          <Categorias />
-        </aside>
-        <main className="productos-main">
-          <Productos />
-        </main>
-      </div>
-    </>
+    <div className="main-layout">
+      <aside className="categorias-aside">
+        <Categorias />
+      </aside>
+      <main className="content-main">
+        <SearchBar />
+        <Productos />
+      </main>
+    </div>
   )
 }
 

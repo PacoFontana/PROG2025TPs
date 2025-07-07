@@ -47,8 +47,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 20px 0 20px 50px;
-    width: calc(90vw - 50px);
+    margin: 20px 50px 20px 20px;
+    width: calc(100% - 70px);
 }
 
 .btn-crear-producto {

@@ -1,4 +1,4 @@
-import '../searchBar.css';
+import '../css/searchBar.css';
 import magnifyingGlassIcon from '../assets/magnifying-glass.icon.svg';
 import plusIcon from '../assets/plus.icon.svg';
 import deleteIcon from '../assets/delete.icon.svg';
