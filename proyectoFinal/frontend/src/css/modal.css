@@ -228,6 +228,19 @@
     font-family: inherit;
 }
 
+.btn-submit {
+    padding: 14px 28px;
+    border: none;
+    background-color: #4f46e5;
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
 .btn-cancel:hover:not(:disabled) {
     background-color: #6b7280;
     color: white;
