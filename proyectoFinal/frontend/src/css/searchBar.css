@@ -1,0 +1,254 @@
+.search-bar-container{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    cursor: text;
+    transition: background-color 0.2s ease;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-bar-container:hover {
+    background-color: #e2e2e2ef;
+}
+
+.search-bar-container:focus-within {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    border: 2px solid rgba(66, 153, 225, 0.3);
+}
+
+#search-bar {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: transparent;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+}
+
+#imagen-lupa {
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+    filter: drop-shadow(0 0 0.5px black);
+    stroke-width: 2;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.btn-clear-search {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 15px 0 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-clear-search:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+    transform: scale(1.1);
+}
+
+.btn-clear-search:active {
+    transform: scale(0.95);
+}
+
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 50px 20px 20px;
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+    overflow: visible; /* Cambiar de hidden a visible para permitir el hover */
+}
+
+.btn-crear-producto {
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: visible;
+}
+
+.btn-crear-producto:hover:not(:disabled) {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.btn-crear-producto:active {
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.btn-crear-producto:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-crear-producto img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.btn-crear-producto:hover:not(:disabled) img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.btn-eliminar-producto {
+    width: 50px;
+    height: 50px;
+    background-color: #f44336;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.btn-eliminar-producto:hover {
+    background-color: #da190b;
+    transform: scale(1.05);
+}
+
+.btn-eliminar-producto:active {
+    transform: scale(0.95);
+}
+
+.btn-eliminar-producto img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    padding: 5px; /* Agregar padding para dar espacio al hover */
+}
+
+/* Estilos responsivos para evitar overflow */
+@media (max-width: 768px) {
+    .search-bar-wrapper {
+        margin: 15px 20px 15px 15px;
+        width: calc(100% - 35px);
+        gap: 10px;
+        overflow: visible;
+    }
+    
+    .action-buttons {
+        padding: 3px;
+    }
+    
+    .btn-crear-producto,
+    .btn-eliminar-producto {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .btn-crear-producto img,
+    .btn-eliminar-producto img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    #imagen-lupa {
+        width: 16px;
+        height: 16px;
+        margin: 0 10px;
+    }
+    
+    .btn-clear-search {
+        width: 18px;
+        height: 18px;
+        font-size: 16px;
+        margin: 0 10px 0 0;
+    }
+    
+    #search-bar {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar-wrapper {
+        margin: 10px 15px 10px 10px;
+        width: calc(100% - 25px);
+        gap: 8px;
+        overflow: visible;
+    }
+    
+    .action-buttons {
+        padding: 2px;
+    }
+    
+    .btn-crear-producto,
+    .btn-eliminar-producto {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .btn-crear-producto img,
+    .btn-eliminar-producto img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .search-bar-container {
+        height: 40px;
+    }
+    
+    #imagen-lupa {
+        width: 14px;
+        height: 14px;
+        margin: 0 8px;
+    }
+    
+    .btn-clear-search {
+        width: 16px;
+        height: 16px;
+        font-size: 14px;
+        margin: 0 8px 0 0;
+    }
+    
+    #search-bar {
+        font-size: 13px;
+    }
+}
