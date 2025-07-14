@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import React from 'react';
 import SearchBar from './components/SearchBar'
 import Categorias from './components/Categorias'
 import Productos from './components/Productos'

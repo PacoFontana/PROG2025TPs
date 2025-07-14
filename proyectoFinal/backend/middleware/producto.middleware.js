@@ -1,4 +1,4 @@
-const joi = require ('joi');
+const joi = require('joi');
 
 const productoSchema = joi.object({
     nombre: joi.string().min(3).max(50).required().messages({
@@ -56,19 +56,19 @@ const productoSchemaPut = joi.object({
 });
 
 function validarProducto(req, res, next) {
-  const { error } = productoSchema.validate(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-  next();
+    const { error } = productoSchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+    next();
 }
 
 function validarProductoPut(req, res, next) {
-  const { error } = productoSchemaPut.validate(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-  next();
+    const { error } = productoSchemaPut.validate(req.body);
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+    next();
 }
 
 module.exports = { validarProducto, validarProductoPut};

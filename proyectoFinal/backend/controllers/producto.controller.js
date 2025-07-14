@@ -1,4 +1,4 @@
-const Producto = require('../models/Producto');
+const Producto = require('../models/producto.model');
 
 crearProducto = async (req, res) => {
     try {
@@ -131,8 +131,6 @@ disminuirStock = async (req, res) => {
         res.status(400).json({mensaje: 'El stock no puede ser menor a 0'});
     }
 }
-
-
 
 module.exports = {
     crearProducto,

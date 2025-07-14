@@ -2,9 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { sequelize } = require('./database/index.db');
-const Producto = require('./models/Producto');
+const Producto = require('./models/producto.model');
 const productoRoutes = require('./routes/producto.routes');
-
 
 const app = express();
 app.use(cors());
@@ -22,7 +21,7 @@ sequelize.sync({force: false})
 
 app.get('/', (req, res) => {res.send('API de Productos');});
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

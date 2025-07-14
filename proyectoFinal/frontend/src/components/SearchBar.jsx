@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useCallback, useRef } from 'react';
 import '../css/searchBar.css';
 import magnifyingGlassIcon from '../assets/magnifying-glass.icon.svg';

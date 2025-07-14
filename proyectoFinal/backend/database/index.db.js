@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     {
         host: config.host,
         dialect: config.dialect,
-        logging: false, //lo que hace este logging false es que no se impriman consultas en consola
+        logging: false,
     }
 );
 

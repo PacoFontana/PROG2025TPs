@@ -1,4 +1,38 @@
-# Proyecto Final
+# 🚀 Sistema Web Full-Stack con Docker
+
+## 📋 Componentes Principales
+
+### 🎯 Arquitectura General
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Nginx     │    │   React     │    │   Express   │
+│  (Proxy)    │◄──►│ (Frontend)  │◄──►│  (Backend)  │
+│   :80       │    │   :3000     │    │   :3001     │
+└─────────────┘    └─────────────┘    └─────────────┘
+                                              │
+                   ┌─────────────┐    ┌─────────────┐
+                   │    Redis    │    │ PostgreSQL  │
+                   │  (Cache)    │    │    (DB)     │
+                   │   :6379     │    │   :5432     │
+                   └─────────────┘    └─────────────┘
+```
+
+### 🚀 Servicios del Sistema - Tecnologias utilizadas
+
+- Node.js, Express, Sequelize, PostgreSQL, dotenv, cors y JOI para el backend.
+- React, vite y axios ára eñ frontend.
+
+
+| Servicio | Tecnología | Puerto | Función |
+|----------|------------|--------|---------|
+| **Frontend** | React 20 | 3000 | Interfaz de usuario |
+| **Backend** | Express + Sequelize | 3001 | API REST |
+| **Database** | PostgreSQL 15 | 5432 | Base de datos principal |
+| **Cache** | Redis 7 | 6379 | Cache y sesiones |
+| **Proxy** | Nginx | 80 | Reverse proxy |
+| **pgAdmin** | pgAdmin 4 | 5050 | Administración de BD |
+
+---
 
 ## 📌 Descripción del proyecto
 
@@ -15,51 +49,141 @@ Funcionalidades Principales
   - Registro de movimientos de inventario
   - Búsqueda simple de productos
 
-## 🚀 Tecnologías utilizadas
+---  
 
-- Node.js, Express, Sequelize, PostgreSQL, dotenv, cors y JOI para el backend.
-- React, vite y axios ára eñ frontend.
+### Archivo ".env"
 
-## ⚠ Aspectos faltantes para la entrega final
+Contenido del archivo `.env` para desarrollo (opcional, por si surge algún problema):
+```env
+# ===========================================
+# BASE DE DATOS POSTGRESQL
+# ===========================================
+POSTGRES_DB=app_database
+POSTGRES_USER=app_user
+POSTGRES_PASSWORD=app_password
 
-Para la entrega final tenemos en camino "dockerizar" el proyecto, ya que priorizamos trabajar localmente hasta tenerlo funcionando al 100%. Por otro lado debemos pulir siertos aspectos relacionados al backend mediante el testing y por supuesto lo que nos entregue el feedback.
+# ===========================================
+# BACKEND (EXPRESS)
+# ===========================================
+NODE_ENV=development
+PORT=3001
 
-## 📂 Estructura del proyecto
+# Configuración de base de datos para Sequelize
+DB_HOST=database
+DB_PORT=5432
+DB_NAME=app_database
+DB_USER=inventario_user
+DB_PASSWORD=inventario123
+
+# JWT para autenticación
+JWT_SECRET=mi_jwt_secret_super_seguro_para_desarrollo_2024
+
+# CORS - Permitir requests desde el frontend
+CORS_ORIGIN=http://localhost:3000
+
+# ===========================================
+# FRONTEND (REACT)
+# ===========================================
+REACT_APP_API_URL=http://localhost:3001/api
+REACT_APP_ENV=development
+
+# Hot reload optimizado para Docker
+CHOKIDAR_USEPOLLING=true
+WATCHPACK_POLLING=true
+FAST_REFRESH=true
+
+# WebSocket para hot reload
+WDS_SOCKET_HOST=localhost
+WDS_SOCKET_PORT=3000
+WDS_SOCKET_PATH=/ws
+
+# ESLint en desarrollo
+ESLINT_NO_DEV_ERRORS=true
+GENERATE_SOURCEMAP=true
+
+# ===========================================
+# REDIS
+# ===========================================
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_URL=redis://redis:6379
+
+# ===========================================
+# PGADMIN 4
+# ===========================================
+PGADMIN_DEFAULT_EMAIL=admin@example.com
+PGADMIN_DEFAULT_PASSWORD=admin123
+PGADMIN_CONFIG_SERVER_MODE=False
+PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+
+# ===========================================
+# CONFIGURACIÓN DE DESARROLLO
+# ===========================================
+DEBUG=true
+LOG_LEVEL=debug
+UPLOAD_PATH=./uploads
+MAX_FILE_SIZE=10MB
+
+# Email para desarrollo (Mailtrap)
+EMAIL_HOST=smtp.mailtrap.io
+EMAIL_PORT=2525
+EMAIL_USER=tu_usuario_mailtrap
+EMAIL_PASS=tu_password_mailtrap
+EMAIL_FROM=noreply@tuapp.com
+
+# ===========================================
+# SEGURIDAD (DESARROLLO)
+# ===========================================
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_WINDOW_MS=900000
+SESSION_SECRET=mi_session_secret_para_desarrollo
+COOKIE_SECURE=false
+COOKIE_HTTP_ONLY=true
+COOKIE_SAME_SITE=lax
+```
+
+### URLs de Acceso
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:3001/api
+- **Nginx Proxy:** http://localhost
+- **pgAdmin 4:** http://localhost:5050
+- **Base de datos:** localhost:5432
+
+---
+
+## 📚 Estructura de Archivos Importantes
 
 ```
-proyectoFinal/
-  backend/
-    .env
-    .gitignore
-    package.json
-    node_modules/
-    src/
-      controllers/
-      models/
-      routes/
-      views/
-      index.js
-  frontend/
-    .env
-    .gitignore
-    package.json
-    src/
-      api/
-      assets/
-      components/
-      css/
-      App.jsx
-      main.jsx
-  README.md
+proyecto-final/
+├── docker-compose.yml          
+├── .env                       
+├── .gitignore  
+├── docker.sh
+├── README.md                  
+│
+├── frontend/
+│   ├── Dockerfile.dev          
+│   ├── package.json            
+│   └── src/                    
+│
+├── backend/
+│   ├── Dockerfile.dev          
+│   ├── package.json           
+│   ├── server.js               
+│   ├── models/                 
+│   └── routes/                 
+│
+├── database/
+│   └── init.sql  
+│
+├── pgadmin/
+│   └── Dockerfile
+│   └── pgpass              
+│
+└── nginx/
+    └── nginx.conf              
 ```
 
-## 🧧 Archivo ".env para probarlo"
-```
-  DB_USER=inventario_user
-  DB_PASSWORD=inventario123
-  DB_NAME=inventario_db
-  DB_HOST=127.0.0.1
-```
 
 ## ✨ Autor
 

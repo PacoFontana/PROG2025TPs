@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useCallback, useMemo } from 'react';
 import minusIcon from '../assets/minus.icon.svg';
 import plusIcon from '../assets/plus.icon.svg';

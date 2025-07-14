@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useCallback } from 'react';
 import '../css/categorias.css';
 import dropdownIcon from '../assets/dropdown-arrow.icon.svg';
