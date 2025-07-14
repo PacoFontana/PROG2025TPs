@@ -184,6 +184,33 @@ proyecto-final/
     └── nginx.conf              
 ```
 
+---
+
+## 📄 Rutas de Productos
+
+Este archivo describe brevemente la función de cada ruta relacionada con productos.
+
+---
+
+### ➕ POST `/productos`
+- **Función:** Crear un nuevo producto.
+- **Middleware:** `validarProducto` valida campos requeridos.
+- **Controlador:** `crearProducto` guarda el producto y verifica la categoría.
+
+### 📋 GET `/productos`
+- **Función:** Obtener todos los productos.
+- **Controlador:** `obtenerProductos` devuelve la lista, incluyendo categorías.
+
+### 🔍 GET `/productos/:id`
+- **Función:** Obtener un producto por ID.
+- **Controlador:** `obtenerProductoPorId` busca por clave primaria.
+
+### ✏️ PUT `/productos/:id`
+- **Función:** Actualizar un producto existente.
+- **Middleware:** `validarProductoPut` valida los campos de actualización.
+- **Controlador:** `actualizarProducto` aplica cambios y verifica existencia.
+
+---
 
 ## ✨ Autor
 
