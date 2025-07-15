@@ -19,8 +19,8 @@
 
 ### 🚀 Servicios del Sistema - Tecnologias utilizadas
 
-- Node.js, Express, Sequelize, PostgreSQL, dotenv, cors y JOI para el backend.
-- React, vite y axios ára eñ frontend.
+- Node.js, Express, Sequelize, PostgreSQL, Dotenv, Cors y JOI para el backend.
+- React, Vite y Axios para el Frontend.
 
 
 | Servicio | Tecnología | Puerto | Función |
@@ -175,7 +175,7 @@ COOKIE_SAME_SITE=lax
 - **Backend API:** http://localhost:3001/api
 - **Nginx Proxy:** http://localhost
 - **pgAdmin 4:** http://localhost:5050
-- **Base de datos:** localhost:5432
+- **Base de datos:** http://localhost:5432
 
 ---
 
