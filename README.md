@@ -49,8 +49,5 @@ Cada integrante trabaja en su propia rama. Ejemplos:
 3. Escribí un título y revisá que la base sea `main`
 4. Hacé clic en "Create pull request"
 
-✅ ¡Y listo! Otro compañero lo revisa y hace merge.
-
 ---
 
-💡 Consejo: Usá comentarios en HTML y CSS para mantener todo ordenado 😉
