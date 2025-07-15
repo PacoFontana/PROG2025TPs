@@ -51,10 +51,38 @@ Funcionalidades Principales
 
 ---  
 
-### Archivo ".env"
 
-Contenido del archivo `.env` para desarrollo (opcional, por si surge algún problema):
-```env
+
+# ⚙️ Documentación del archivo `.env`
+
+Este archivo `.env` contiene las variables de entorno necesarias para que la aplicación funcione correctamente en modo desarrollo.
+
+---
+
+## 📦 ¿Qué contiene este archivo?
+
+Este `.env` está organizado por secciones según los servicios utilizados en el proyecto:
+
+- PostgreSQL
+- Backend (Node.js + Express)
+- Frontend (React)
+- Redis
+- PGAdmin
+- Email (Mailtrap)
+- Seguridad y sesiones
+
+---
+
+## 🗄️ 1. Configuración de la base de datos PostgreSQL
+
+Estas variables configuran el contenedor o servicio de PostgreSQL:
+
+```
+POSTGRES_DB=app_database               # Nombre de la base de datos a crear
+POSTGRES_USER=app_user                 # Usuario administrador de la base
+POSTGRES_PASSWORD=app_password         # Contraseña del usuario
+
+
 # ===========================================
 # BASE DE DATOS POSTGRESQL
 # ===========================================
@@ -170,6 +198,7 @@ proyecto-final/
 │   ├── Dockerfile.dev          
 │   ├── package.json           
 │   ├── server.js               
+│   ├── controllers/
 │   ├── models/                 
 │   └── routes/                 
 │
@@ -211,6 +240,50 @@ Este archivo describe brevemente la función de cada ruta relacionada con produc
 - **Controlador:** `actualizarProducto` aplica cambios y verifica existencia.
 
 ---
+
+### 📈 Vistas de la página:
+
+---
+
+### 🔍 Barra de búsqueda
+
+Permite buscar productos por:
+
+- 🏷️ **Nombre**
+- 📂 **Categoría**
+
+---
+
+### ➕ Agregar productos
+
+Botón que despliega un formulario con los siguientes campos:
+
+- ✏️ **Nombre**
+- 📁 **Categoría**
+- 📝 **Descripción**
+- 💲 **Precio**
+- 📦 **Stock**
+
+---
+
+### 🧾 Visualización de productos
+
+Sección donde se listan todos los productos. Cada producto puede:
+
+- ✏️ **Editar** sus datos
+- ❌ **Eliminarse**
+- 🔄 **Modificar su stock**
+
+---
+
+### ⚙️ Filtros de visualización
+
+Opciones disponibles:
+
+- 🔍 **Buscar por categoría**
+- 📃 **Mostrar todos los productos**
+
+
 
 ## ✨ Autor
 
